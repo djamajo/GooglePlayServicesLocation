@@ -27,7 +27,7 @@ or
 ```
 
 
-* Add the following meta information within the ```AndroidManifiest.xml``` within the ```<application ....> </application>```  section
+* Add the following meta information within the ```AndroidManifiest.xml``` within the ```<application>.... </application>```  section
 
 ```xml
     <meta-data android:name="com.google.android.gms.version"  
@@ -38,7 +38,7 @@ or
 API 23 (android 6.0) or higher consideration
 --------------------------------------------
 
-If the target SDK for you application is 23 or higher the permission have to accepted by the user. Therefore it has to be implemented the verification if the ```ndroid.permission.ACCESS_FINE_LOCATION``` was granted.  
+If the target SDK for you application is 23 or higher the permission have to accepted by the user. Therefore it has to be implemented the verification if the ```android.permission.ACCESS_FINE_LOCATION``` was granted.  
 In case the the permission was not granted it has to be requested during the execution time.  
 
 https://developer.android.com/training/permissions/requesting.html
