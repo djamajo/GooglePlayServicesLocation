@@ -20,9 +20,16 @@ import com.google.android.gms.location.LocationServices;
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
     private final String LOG_TAG = AppCompatActivity.class.getSimpleName();
-    private TextView txtOutput;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
+    private Location mLastLocation;
+
+
+    private TextView mLongitude_text;
+    private TextView mLatitude_text;
+
+
+
 
     private static final int MY_PERMISSIONS_REQUEST = 1;
 
@@ -43,7 +50,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         configureLocationUpdates();
 
 
-        txtOutput = (TextView) findViewById(R.id.txtOutput);
+        mLongitude_text = (TextView) findViewById(R.id.longitude_text);
+        mLatitude_text = (TextView) findViewById(R.id.latitude_text);
 
 
     }
@@ -59,7 +67,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     @Override
     protected void onStop() {
         //disconnect the client
-        mGoogleApiClient.disconnect();
+        if (mGoogleApiClient.isConnected()){
+            mGoogleApiClient.disconnect();
+        }
+
         super.onStop();
     }
 
@@ -148,7 +159,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-                    txtOutput.setText("No permission to get the location");
+                    mLatitude_text.setText("No permission to get the location");
+                    mLongitude_text.setText("No permission to get the location");
 
                 }
                 return;
@@ -178,7 +190,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     @Override
     public void onLocationChanged(Location location) {
         Log.i(LOG_TAG,location.toString());
-        txtOutput.setText(location.toString());
+        mLatitude_text.setText( Double.toString(location.getLatitude()));
+        mLongitude_text.setText( Double.toString(location.getLongitude()));
+
+
 
 
     }

@@ -3,9 +3,9 @@
     package="com.example.montoya.googleplayserviceslocation">
 
 
-    <!-- This compile was added for using the google play services-->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <!-- This permission was added for using the google play services, Location-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
 
 
     <application
@@ -16,7 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- This compile was added for using the google play services-->
+        <!-- This meta data  was added for using the google play services-->
         <meta-data android:name="com.google.android.gms.version"  android:value="@integer/google_play_services_version"/>
 
         <activity android:name=".MainActivity">
